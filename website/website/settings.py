@@ -39,8 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # custom app
     'core',
+    'userauths',
+    
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -140,3 +144,6 @@ JAZZMIN_SETTINGS = {
     'site_logo' : 'assets/images/blogpost/double-quote.png',
     'copyright' : 'E-Shop',
 }
+
+
+AUTH_USER_MODEL = 'userauths.User' 
