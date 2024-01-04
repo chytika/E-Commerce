@@ -4,5 +4,6 @@ from userauths import views
 app_name = "userauths"
 
 urlpatterns = [
-    path("sign-up/", views.Register_view, name="sign-up")
+    path("sign-up/", views.Register_view, name="sign-up"),
+    path("sign-in/", views.login_view, name="sign-in"),
 ]
