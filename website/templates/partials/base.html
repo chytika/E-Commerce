@@ -55,8 +55,14 @@
                             {% comment %} <option value="jp">Japan (JPY)</option> {% endcomment %}
                         </select>
                     </li>
-                    <li><a href="login.html" class="login-link"><i class="biolife-icon icon-login"></i>Login/Register</a></li>
-                    {% comment %} <li><a href="{% url 'Register_view' %}" class="login-link"><i class="biolife-icon icon-login"></i>Login/Register</a></li> {% endcomment %}
+                    {% if request.user.is_authencated %}
+                    <li><a href="{% url 'userauths:sign-out' %}" class="Logout-link"><i class="biolife-icon icon-Logout"></i>Logout</a></li>
+                    {% comment %} Logout icon is not displayed {% endcomment %}
+                    {% else %}
+                    <li><a href="{% url 'userauths:sign-in' %}" class="login-link"><i class="biolife-icon icon-login"></i> Login/Register </a></li>
+
+                    {% endif %}
+                </ul>
                 </ul>
             </div>
         </div>
@@ -797,7 +803,7 @@
                             <div class="newsletter-block layout-01">
                                 <h4 class="title">Newsletter Signup</h4>
                                 <div class="form-content">
-                                    <form action="#" name="new-letter-foter">
+                                    <form action="{% url 'userauths:sign-up'%}" name="new-letter-foter">
                                         <input type="email" class="input-text email" value="" placeholder="Your email here...">
                                         <button type="submit" class="bnt-submit" name="ok">Sign up</button>
                                     </form>
