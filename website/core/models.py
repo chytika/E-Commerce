@@ -109,7 +109,7 @@ class Product(models.Model):
 
     status = models.BooleanField(default=True)
     In_stock = models.BooleanField(default=True)
-    featured = models.BooleanField(default=False)
+    featured = models.BooleanField(default=True)
     digital = models.BooleanField(default=False)
 
     sku = ShortUUIDField(unique=True, length= 10, max_length=30, prefix="sku", alphabet="1234567890")
@@ -199,7 +199,7 @@ class ProductReview(models.Model):
     def __str__(self):
         return self.product.title
     
-    def _get_rating(self):
+    def __get_rating(self):
         return self.rating
 
 

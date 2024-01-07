@@ -4,9 +4,26 @@ from core.models import Product, Category, Vendor, CartOrder, CartOrderItems, Pr
 
 # Create your views here.
 def index(request):
-    products = Product.objects.all()
+    products = Product.objects.all().order_by("Category_id")
+    #  To filter with product status
+    # products = Product.objects.filter(product_status ="In_review", featured="True")
+
 
     context = {
         "products":products
     }
     return render(request, 'core/index.html', context)
+
+
+
+
+def product_list_view(request):
+    products = Product.objects.all()
+    #  To filter with product status
+     #products = Product.objects.filter(product_status ="In_review", featured="True")
+
+
+    context = {
+        "products":products
+    }
+    return render(request, 'core/product_list.html', context)
